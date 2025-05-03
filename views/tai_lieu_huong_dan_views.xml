@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tài liệu hướng dẫn -->
+    <record id="view_tai_lieu_huong_dan_tree" model="ir.ui.view">
+        <field name="name">tai.lieu.huong.dan.tree</field>
+        <field name="model">tai_lieu_huong_dan</field>
+        <field name="arch" type="xml">
+            <tree string="Tài liệu hướng dẫn">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_tai_lieu_huong_dan_form" model="ir.ui.view">
+        <field name="name">tai.lieu.huong.dan.form</field>
+        <field name="model">tai_lieu_huong_dan</field>
+        <field name="arch" type="xml">
+            <form string="Tài liệu hướng dẫn">
+                <sheet>
+                    <div class="w-100 mb-3">
+                        <h1>
+                            <field name="name" placeholder="Tên tài liệu"/>
+                        </h1>
+                    </div>
+                    <div class="w-100 mb-3">
+                        <field name="description" placeholder="Mô tả"/>
+                    </div>
+                    <div class="w-100 mb-3">
+                        <field name="file_attachment" filename="file_name" widget="pdf_viewer"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_tai_lieu_huong_dan" model="ir.actions.act_window">
+        <field name="name">Tài liệu hướng dẫn</field>
+        <field name="res_model">tai_lieu_huong_dan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Video hướng dẫn -->
+    <record id="view_video_huong_dan_tree" model="ir.ui.view">
+        <field name="name">video.huong.dan.tree</field>
+        <field name="model">video_huong_dan</field>
+        <field name="arch" type="xml">
+            <tree string="Video hướng dẫn">
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_video_huong_dan_kanban" model="ir.ui.view">
+        <field name="name">video.huong.dan.kanban</field>
+        <field name="model">video_huong_dan</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="youtube_video_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill">
+                            <div class="o_kanban_image_fill_left" t-attf-style="background-image: url('https://img.youtube.com/vi/#{record.youtube_video_id.raw_value}/hqdefault.jpg')">
+                                <img class="o_kanban_image_inner_pic" t-att-src="'https://img.youtube.com/vi/' + record.youtube_video_id.raw_value + '/default.jpg'" alt="Video Thumbnail"/>
+                            </div>
+                            <div class="oe_kanban_details d-flex flex-column">
+                                <strong class="o_kanban_record_title mb-1"><field name="name"/></strong>
+                                <div class="o_kanban_record_subtitle text-muted">
+                                    <t t-if="record.description.raw_value">
+                                        <t t-esc="record.description.raw_value.length > 100 ? record.description.raw_value.substring(0, 100) + '...' : record.description.raw_value"/>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_video_huong_dan_form" model="ir.ui.view">
+        <field name="name">video.huong.dan.form</field>
+        <field name="model">video_huong_dan</field>
+        <field name="arch" type="xml">
+            <form string="Video hướng dẫn">
+                <sheet>
+                    <div class="w-100 mb-3">
+                        <h1>
+                            <field name="name" placeholder="Tên video" class="text-break w-100"/>
+                        </h1>
+                    </div>
+                    <div class="w-100 mb-3">
+                        <field name="description" placeholder="Mô tả"/>
+                    </div>
+                    <div class="w-100 mb-3" groups="base.group_system">
+                        <field name="youtube_url" placeholder="Nhập URL YouTube (ví dụ: https://www.youtube.com/watch?v=...)" decoration-danger="not youtube_url"/>
+                    </div>
+                    <div class="oe_video_container mt-4">
+                        <field name="youtube_embed" widget="html"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_video_huong_dan" model="ir.actions.act_window">
+        <field name="name">Video hướng dẫn</field>
+        <field name="res_model">video_huong_dan</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+</odoo> 

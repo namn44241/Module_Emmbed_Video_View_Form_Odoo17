@@ -1,0 +1,9 @@
+📁 models
+  📄 tai_lieu_huong_dan.py
+📁 static
+  📁 src
+    📁 js
+      📄 video.js
+📄 str.js
+📁 views
+  📄 tai_lieu_huong_dan_views.xml
