@@ -23,6 +23,8 @@ _Vietnamese below_
 
 ![image](https://github.com/user-attachments/assets/7548da08-8687-4ff5-9271-d69f0f2487f3)
 
+---
+
 _Vietnamese_
 
 # Module Nhúng Video Youtube Vào View Form Trong ODOO17
