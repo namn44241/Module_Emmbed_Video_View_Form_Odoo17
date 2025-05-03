@@ -46,7 +46,7 @@ _Vietnamese_
 - Bạn copy và dán đoạn code js trong thư mục `static`
 - Bạn sử dụng bằng cách code `Models` và `Views` theo cách mình đã code
 - Tận hưởng thôi!
-- 
+
 # Contact for request another ODOO tips&trick:
 [@namnguyenriptcns](https://t.me/namnguyenriptcns)
 
